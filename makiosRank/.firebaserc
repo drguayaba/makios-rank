@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "rank-makios": {
+      "hosting": {
+        "makiosRank": [
+          "rank-makios"
+        ]
+      }
+    }
+  }
+}

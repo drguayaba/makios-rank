@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped" *ngIf="makios && rank">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Rank</th>
+          <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let makio of makios; index as i">
+          <td>{{ makio.position }}</td>
+          <td>{{ makio.name }}</td>
+          <td>{{ rank[i].rank }}</td>
+          <td>
+            <div *ngIf="currentMakio">
+              <button
+                *ngIf="(currentMakio.position - 1) == makio.position && (!loader && !challengeClicked)"
+                mat-raised-button
+                (click)="validateChallenge(); loader = true; challengeClicked = true"
+              >Retar</button>
+              <!-- <button  mat-raised-button (click)="validateChallenge()">Retar</button> -->
+              <mat-spinner *ngIf="(currentMakio.position - 1) == makio.position && (loader && challengeClicked)"></mat-spinner>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

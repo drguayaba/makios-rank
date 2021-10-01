@@ -1,0 +1,31 @@
+<div class="contentAll">
+  <div class="container">
+    <mat-card>
+      <img src="https://firebasestorage.googleapis.com/v0/b/rank-makios.appspot.com/o/makiosLogo.jpg?alt=media&token=34444543-d001-4e8c-8d3c-9ebf4a842544" alt="makios" class="img">
+      <form [formGroup]="loginForm" class="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="fill" class="group">
+          <mat-label>Correo eléctronico</mat-label>
+          <input
+            id="user"
+            type="email"
+            matInput
+            formControlName="user"
+            autocomplete="email"
+          />
+        </mat-form-field>
+        <ng-template [ngIf]="submitedError">
+          <small class="error" *ngIf="user.errors.required">¡Bruto!, ingrese el correo...</small>
+          <small class="error" *ngIf="user.errors.pattern">¡Bruto!, asi no son los correos...</small>
+        </ng-template>
+        <mat-form-field appearance="fill" class="group">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password" autocomplete="current-password">
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Esconder contraseña'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </form>
+    </mat-card>
+  </div>
+</div>
